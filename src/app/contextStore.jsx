@@ -7,7 +7,7 @@ const DmfsseContex = createContext({})
 
 
 export const DmfsseContextProvider = ({children}) => {
-    const [error, setError] = useState(false);
+    // signup field error
     const [isFarmerOrSse, setIsFarmerOrSse] = useState(false);
     const [imageUrl, setImageUrl] = useState(null)
     const [progressPercent, setProgressPercent] = useState(0);
@@ -45,7 +45,6 @@ export const DmfsseContextProvider = ({children}) => {
         setFile,
         imageUrl,
         progressPercent,
-        error
     }
 
     return <DmfsseContex.Provider value={context}>

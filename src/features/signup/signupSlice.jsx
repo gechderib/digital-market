@@ -13,7 +13,7 @@ export const addNewUser = createAsyncThunk(
       const response = await axios.post(signupUrl, initialData);
       return response.data;
     } catch (err) {
-      return err.message;
+      return err.code;
     }
   }
 );
@@ -23,23 +23,15 @@ const signupSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder
-      .addCase(addNewUser.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(addNewUser.fulfilled, (state, action) => {
-        state.status = "succeeded";
-      })
-      .addCase(addNewUser.rejected, (state, action) => {
-        state.status = "failed";
-        state.err = action.payload;
-      });
+    builder.addCase(addNewUser.fulfilled, (state, action) => {
+      // console.log(action)
+      state.status = "succeeded";
+    });
   },
 });
 
-
 // export const {} = signupSlice.actions;
-export const getStatus = (state) => state.users.status
-export const getError = (state) => state.users.error
+export const getSignupStatus = (state) => state.users.status;
+export const getSignupError = (state) => state.users.error;
 
 export default signupSlice.reducer;
