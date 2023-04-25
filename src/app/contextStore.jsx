@@ -4,14 +4,15 @@ import {ref,getDownloadURL, uploadBytesResumable} from "firebase/storage"
 
 const DmfsseContex = createContext({})
 
-
-
 export const DmfsseContextProvider = ({children}) => {
     // signup field error
+    const [dashboardTab, setDasboardTab] = useState()
+
     const [isFarmerOrSse, setIsFarmerOrSse] = useState(false);
     const [imageUrl, setImageUrl] = useState(null)
     const [progressPercent, setProgressPercent] = useState(0);
     const [file, setFile] = useState(null)
+    const [showSidebar, setShowSideBar] = useState(false)
 
     const handleImageUpload = () => {
     
@@ -37,6 +38,10 @@ export const DmfsseContextProvider = ({children}) => {
           }
         );
       }
+    
+    const toggleSideBar = () => {
+      setShowSideBar(!showSidebar)
+    }
 
     const context = {
         isFarmerOrSse,
@@ -45,6 +50,10 @@ export const DmfsseContextProvider = ({children}) => {
         setFile,
         imageUrl,
         progressPercent,
+        toggleSideBar,
+        showSidebar,
+        dashboardTab,
+        setDasboardTab
     }
 
     return <DmfsseContex.Provider value={context}>

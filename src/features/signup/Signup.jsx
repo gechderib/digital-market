@@ -3,8 +3,8 @@ import AuthRight from "../../components/AuthRight";
 import { useNavigate } from "react-router-dom";
 import UploadImage from "../../components/UploadImage";
 import DmfsseContex from "../../app/contextStore";
-import { useDispatch, useSelector } from "react-redux";
-import { addNewUser, getSignupError, getSignupStatus } from "./signupSlice";
+import { useDispatch } from "react-redux";
+import { addNewUser } from "./signupSlice";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Signup = () => {
     password,
     identifictionPicture: dmfsseCtx.imageUrl,
   };
-  // get user info
+  // get user info from field
   const getFirstName = (e) => {
     setFirstName(e.target.value);
   };
@@ -113,11 +113,6 @@ const Signup = () => {
                     </div>
 
                     <form onSubmit={handleSubmit}>
-                      {requestStatus == "faild" ? (
-                        <p className="text-red-600 mb-4 italic animate-bounce">
-                          error happen please try again
-                        </p>
-                      ) : null}
                       {requestStatus == "net_err" ? (
                         <p className="text-red-600 mb-4 italic animate-bounce">
                           Pleace check your connection

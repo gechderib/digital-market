@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 const BuyNowCard = () => {
   const navigate = useNavigate()
   return (
-    <div className="sm:flex justify-between  bg-rose-50 py-8 px-16 sm:mx-10 mx-2 rounded-3xl">
+    <div  style={{
+      background:
+        "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
+    }} className="sm:flex justify-between  py-8 px-16 sm:mx-10 mx-2 rounded-3xl">
       <div className="flex flex-col justify-evenly">
         <p className="text-xl w-72 font-thin">here some text about the ... here some text about the ...</p>
         <a href="/login" className="group my-5 flex w-44 cursor-pointer select-none items-center justify-center rounded-md bg-black px-6 py-2 text-white transition">
