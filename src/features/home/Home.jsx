@@ -5,11 +5,12 @@ import SortedBy from '../../components/SortedBy'
 import ProductCard from '../../components/cards/ProductCard'
 import Pagination from '../../components/Pagination'
 import Footer from '../../components/Footer'
+import Layout from '../../components/layout/Layout'
 
 const Home = () => {
   return (
-    <div>
-        <HomeNav/>
+    <Layout>
+        
         <div className='h-24'></div>
         <BuyNowCard/>
         <SortedBy/>
@@ -21,8 +22,8 @@ const Home = () => {
           <ProductCard/>
         </div>
         <Pagination/>
-        <Footer/>
-    </div>
+        
+    </Layout>
   )
 }
 

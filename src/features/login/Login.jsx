@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AuthRight from "../../components/AuthRight.jsx";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "./loginSlice.jsx";
 
@@ -23,7 +23,6 @@ const Login = () => {
   // can save
   const canSave = [phoneNumber, password].every(Boolean);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoginStatus("idle");
@@ -39,12 +38,12 @@ const Login = () => {
         if (response == "ERR_NETWORK") {
           setLoginStatus("net_err");
         }
-        if(response.accessToken){
-          setPassword("")
-          setPhoneNumber("")
-          setLoginStatus("idle")
-          localStorage.setItem("user",JSON.stringify(response)) 
-          navigate("/")
+        if (response.accessToken) {
+          setPassword("");
+          setPhoneNumber("");
+          setLoginStatus("idle");
+          localStorage.setItem("user", JSON.stringify(response));
+          navigate("/");
         }
       } catch (err) {
         setLoginStatus("failed");
@@ -92,50 +91,40 @@ const Login = () => {
                           Please login to your account
                         </p>
                       )}
+
                       {/* Phone number input */}
-                      <div className="relative z-0 w-full group">
-                        <label
-                          htmlFor="phoneNumber"
-                          className="uppercase  text-[11px]  text-gray-900 bg-white relative px-1  top-2 left-3 w-auto group-focus-within:text-rose-400"
-                        >
-                          Phone Number
-                        </label>
+                      <div className="relative h-10 w-full min-w-[200px] mb-4">
                         <input
                           type="text"
-                          name="phoneNumber"
                           id="phoneNumber"
                           onChange={getPhoneNumber}
                           value={phoneNumber}
-                          className="h-9 text-10 bg-gray-50 border py-55-rem border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5 focus:outline-none"
+                          className="peer h-full w-full rounded-md border border-blue-gray-200  bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                           required={true}
-                          placeholder="+251953890542"
+                          placeholder=" "
                         />
+                        <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                          Phone Number
+                        </label>
                       </div>
 
                       {/* Password input */}
-                      <div className="relative z-0 w-full group">
-                        <label
-                          htmlFor="password"
-                          className="uppercase  text-[11px]  text-gray-900 bg-white relative px-1  top-2 left-3 w-auto group-focus-within:text-rose-400"
-                        >
-                          Password
-                        </label>
+                      <div className="relative h-10 w-full min-w-[200px]">
                         <input
                           type="password"
-                          name="password"
                           id="password"
                           onChange={getPassword}
                           value={password}
-                          className="h-9 text-10 bg-gray-50 border py-55-rem border-gray-300 text-gray-900 text-sm rounded-xl block w-full p-2.5 focus:outline-0"
+                          className="peer h-full w-full rounded-md border border-blue-gray-200  bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                           required={true}
-                          placeholder="abcd@1234!"
+                          placeholder=" "
                         />
+                        <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                          Password
+                        </label>
                       </div>
-
                       {/* Submit button */}
-                      <button
-                        className="mb-6 mt-5 py-2 flex justify-center hover:bg-gray-950 rounded-lg text-center bg-black  w-full"
-                      >
+                      <button className="mb-6 mt-5 py-2 flex justify-center hover:bg-gray-950 rounded-lg text-center bg-black  w-full">
                         {loginStatus == "pending" ? (
                           <div>
                             <svg
